@@ -1,0 +1,30 @@
+<section>
+  <h2 class="font-bold">API Integration Logs</h2>
+  <div class="text-sm">Below you'll find all the integration logs between Eventtia and Cartier API.</div>
+
+  <div class="text-sm">
+    <.table id="log_records" rows={@data.log_records}>
+      <:col :let={log_record} label="Date"><%= log_record.inserted_at %></:col>
+      <:col :let={log_record} label="Event"><%= log_record.event_id %> - <%= log_record.event_name %></:col>
+      <:col :let={log_record} label="Response Code">
+        <%= if log_record.server_response_code == "200" do %>
+            <span class="text-green-600"><%= log_record.server_response_code %></span>
+          <% else %>
+            <span class="text-red-600"><%= log_record.server_response_code %></span>
+          <% end %>
+      </:col>
+      <:col :let={log_record} ><a href={"/integration-logs/show/#{log_record.id}"} phx-value-ref={log_record.id} class="underline">View More</a></:col>
+    </.table>
+  </div>
+  <div class="text-center">
+    <%= Enum.map(1..@data.pages, fn(x) -> %>
+
+        <%= if @data.page == x do %>
+          <%= x %>
+        <% else %>
+          <a href={"/integration-logs/index?page=#{x}"} phx-click="page" phx-value-ref={x} class="underline"><%= x %></a>
+        <% end %>
+
+    <% end) %>
+  </div>
+</section>

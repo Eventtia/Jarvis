@@ -1,0 +1,29 @@
+<section>
+  <div class="pb-10"><.back navigate={~p"/integration-logs/index"}>Back to logs</.back></div>
+  <div class="p-6 bg-white rounded-xl shadow-lg space-x-4 text-sm">
+      <div class="flex flex-row w-full">
+        <!-- Log details and Server Response Code -->
+        <div class="w-1/2 pb-5"><img src={~p"/images/logo.svg"} width="60"></div>
+        <div class="w-1/2 text-right">
+          <div class="font-bold">Log Details #<%= @log_details.id %></div>
+          <%= if @log_details.server_response_code == "200" do %>
+            <div class="text-green-600"><%= @log_details.server_response_code %> (Success)</div>
+          <% else %>
+            <div class="text-red-600 text-right"><%= @log_details.server_response_code %>(Failed)</div>
+          <% end %>
+        </div>
+      </div>
+
+      <div><span class="font-bold">Date:</span> <%= @log_details.date %></div>
+      <div><span class="font-bold">Event Name:</span> <%= @log_details.event_name %></div>
+      <div class="font-bold pt-5">Attendee Data</div>
+      <div class="break-words"><%= @log_details.attendee_data %></div>
+      <div class="font-bold pt-5">Server Response</div>
+      <div class="break-words"><%= @log_details.server_response_details %></div>
+  </div>
+</section>
+
+
+<!--
+|> JSON.decode |> elem(1) |> Jason.Formatter.pretty_print
+-->

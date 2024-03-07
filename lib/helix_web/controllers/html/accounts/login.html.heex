@@ -1,0 +1,13 @@
+<section>
+  <.form for={@form} action="/account/process-login">
+    <.input type="email" field={@form[:email]} label="Email" />
+    <.input type="password" field={@form[:password]} label="Password" />
+    <div>&nbsp;</div>
+    <div class="mt-0.5 space-y-8 bg-white"></div>
+    <.button>Login</.button>
+
+  </.form>
+
+  <!-- <.link href="/" class="underline">Regular anchor link</.link> -->
+
+</section>

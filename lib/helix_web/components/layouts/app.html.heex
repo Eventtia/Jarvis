@@ -1,0 +1,26 @@
+<header class="px-4 sm:px-6 lg:px-8 font-mono">
+  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
+    <div class="flex items-center gap-4">
+      <a href="/"><img src={~p"/images/logo-cartier.png"} width="100" /></a>
+      <p class="bg-slate-200 rounded-full px-2 font-medium leading-6">
+        v<%= "1.1.19" %>
+      </p>
+    </div>
+    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
+      <%= if @current_user do %>
+        Welcome  <%= @current_user %> :-)<!--<a href="https://twitter.com/elixirphoenix" class="hover:text-zinc-700">@elixirphoenix</a>-->
+        <a href="/account/logout" class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80">
+          Logout
+        </a>
+      <% else %>
+        <a href="/account/login" class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80">Login</a>
+      <% end %>
+    </div>
+  </div>
+</header>
+<main class="px-4 py-20 sm:px-6 lg:px-8 font-mono">
+  <div class="mx-auto max-w-2xl">
+    <.flash_group flash={@flash} />
+    <%= @inner_content %>
+  </div>
+</main>
