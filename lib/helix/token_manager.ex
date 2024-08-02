@@ -11,7 +11,7 @@ defmodule Helix.TokenManager do
     token = String.replace(token, "Bearer ", "") |> String.replace(" ", "") |> String.replace("bearer", "")
     case Phoenix.Token.verify(@secret_token, "user auth", token, max_age: 864000000000) do
       {:ok, token_account } -> {:ok, token_account}
-      _ -> {:error }
+      _ -> {:error}
     end
   end
 end
