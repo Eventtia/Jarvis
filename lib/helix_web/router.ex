@@ -34,6 +34,7 @@ defmodule HelixWeb.Router do
   scope "/api/v1", HelixWeb do
     pipe_through :api_authenticated
     post "/messages/add", MessagesController, :add
+    post "/messages/test", MessagesController, :send_test_message
   end
 
   scope "/api/v1", HelixWeb do

@@ -13,7 +13,7 @@ defmodule Mix.Tasks.Helix.GenerateJwt do
       [] -> IO.puts "Please provide a token name"
       "" -> IO.puts "Please provide a token name"
       nil -> IO.puts "Please provide a token name"
-      _ -> TokenManager.issue_token(name)
+      _ -> IO.puts TokenManager.issue_token(name)
     end
   end
 end

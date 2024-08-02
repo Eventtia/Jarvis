@@ -10,7 +10,8 @@ import Config
 config :helix,
   ecto_repos: [Helix.Repo],
   generators: [timestamp_type: :utc_datetime],
-  secret_token: "gvP4cb7xY9bSA76OKOw26B"
+  secret_token: "gvP4cb7xY9bSA76OKOw26B",
+  whatsapp_token: "EAALaLvEcmbcBOy5Ov7JWbNY39DTQ3gZCi4MzUZAH84PlAu192im0DTPPwqTccJqjDBUmjGpHxbD3rIl5YRNZCsElBHYzD6B3icTroMkmhFXamGTwJay6ljYMkrWmSxaKlJuxSKk2IkGpVPlCm91LZBX4jMH4XmpwqrPQZALBGsyZAXzIptDA0UYRiTg5vOwMn4p29as8aCoMWA8nZBA"
 
 # Configures the endpoint
 config :helix, HelixWeb.Endpoint,

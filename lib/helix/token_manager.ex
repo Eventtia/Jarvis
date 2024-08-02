@@ -3,7 +3,7 @@ defmodule Helix.TokenManager do
 
   def issue_token(name) do
     token = Phoenix.Token.sign(@secret_token, "user auth", name)
-    IO.puts "Issued token: #{token}"
+    #IO.puts "Issued token: #{token}"
     token
   end
 
