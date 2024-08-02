@@ -10,7 +10,7 @@ import Config
 config :helix,
   ecto_repos: [Helix.Repo],
   generators: [timestamp_type: :utc_datetime],
-  secret_token: "QXKQvPaMXzRnNhTlCdYn"
+  secret_token: "gvP4cb7xY9bSA76OKOw26B"
 
 # Configures the endpoint
 config :helix, HelixWeb.Endpoint,

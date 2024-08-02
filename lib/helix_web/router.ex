@@ -26,30 +26,39 @@ defmodule HelixWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", HelixWeb do
-    pipe_through :browser
-
-    get "/", AccountController, :login
-    get "/account/login", AccountController, :login
-    get "/account/logout", AccountController, :logout
-    post "/account/process-login", AccountController, :process_login
-    get "/show/:test", AccountController, :show
-    get "/redirect", AccountController, :redirect_error
+  pipeline :api_authenticated do
+    plug :accepts, ["json"]
+    plug HelixWeb.ValidateJWTPlug # This plug validates and extracts JWT.
   end
 
-  scope "/", HelixWeb do
-    pipe_through :browser_authenticated
-
-    get "/account/show", AccountController, :show
-    get "/integration-logs/index", IntegrationLogsController, :index
-    get "/integration-logs/show/:id", IntegrationLogsController, :show
+  scope "/api/v1", HelixWeb do
+    pipe_through :api_authenticated
+    post "/messages/add", MessagesController, :add
   end
 
-  scope "/api", HelixWeb do
+  scope "/api/v1", HelixWeb do
     pipe_through :api
-
-    post "/integration-logs/add", IntegrationLogsController, :add
+    get "/status", MainController, :status
   end
+
+  # scope "/", HelixWeb do
+  #   pipe_through :browser
+
+  #   get "/", AccountController, :login
+  #   get "/account/login", AccountController, :login
+  #   get "/account/logout", AccountController, :logout
+  #   post "/account/process-login", AccountController, :process_login
+  #   get "/show/:test", AccountController, :show
+  #   get "/redirect", AccountController, :redirect_error
+  # end
+
+  # scope "/", HelixWeb do
+  #   pipe_through :browser_authenticated
+
+  #   get "/account/show", AccountController, :show
+  #   get "/integration-logs/index", IntegrationLogsController, :index
+  #   get "/integration-logs/show/:id", IntegrationLogsController, :show
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", HelixWeb do
