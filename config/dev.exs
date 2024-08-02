@@ -5,7 +5,7 @@ config :helix, Helix.Repo,
   username: "esteban8a",
   password: "",
   hostname: "host.docker.internal",
-  database: "helix_cartier_logs",
+  database: "eventtia_jarvis",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

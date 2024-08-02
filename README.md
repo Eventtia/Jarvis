@@ -1,5 +1,8 @@
 # Helix
 
+To start docker container:
+docker run -t -i -v /Users/esteban8a/Development/Eventtia/Jarvis:/app -p 4000:4000 elixir-dev-container:v1 /bin/bash
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
