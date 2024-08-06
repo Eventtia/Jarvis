@@ -2,7 +2,7 @@ defmodule Helix.WhatsappHelper do
   @whatsapp_token Application.get_env(:helix, :whatsapp_token)
   @whatsapp_url :"https://graph.facebook.com/v20.0/347154798489139/messages"
 
-  def send_test_message(phone_number) do
+  def send_test_message(phone_number, attendee_name, event_name, start_date) do
     headers = ["Content-Type": "application/json", "Authorization": "Bearer #{@whatsapp_token}"]
 
     body =  %{  messaging_product: "whatsapp",
@@ -11,9 +11,9 @@ defmodule Helix.WhatsappHelper do
                 template: %{  name: "attendee_successful_event_registration",
                               language: %{ code: "en" },
                               components: [ %{  type: "body",
-                                                parameters: [ %{ type: "text", text: "Esteban Ochoa" },
-                                                              %{ type: "text", text: "Ben Bohmmer" },
-                                                              %{ type: "text", text: "12th of August 2024 at 8:00pm" }
+                                                parameters: [ %{ type: "text", text: "#{attendee_name}" },
+                                                              %{ type: "text", text: "#{event_name}" },
+                                                              %{ type: "text", text: "#{start_date}" }
                                                             ]
                                               },
                                               %{  type: "header",

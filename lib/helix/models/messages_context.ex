@@ -5,6 +5,7 @@ defmodule Helix.MessagesContext do
 	alias Helix.Repo
 	alias Helix.Message
 	alias Helix.EventtiaPayloadHelper
+	alias Helix.WhatsappHelper
 
 	def send_message(payload) do
     #1. Extract and clean data
@@ -12,20 +13,23 @@ defmodule Helix.MessagesContext do
     uuid = data.attendee.uuid
     phone_number = data.attendee.phone_number
     full_name = data.attendee.full_name
+    event_name = data.event.name
+    start_date = data.event.start_date
     qr_code = data.attendee.qr_code
 
     IO.puts ">>UUID: #{uuid}"
     IO.puts ">>Telephone: #{phone_number} || QR Code: #{qr_code}"
     IO.puts ">>Full Name: #{full_name}"
 
-    #2. Store in database
+    #2. Store message in database
     case create_message(uuid, phone_number, data, "new_attendee") do
-      {:ok, changeset} -> IO.puts ">>Message created"
+      {:ok, message} -> IO.puts ">>Message created"
+                        #2.1. Send message
+                        WhatsappHelper.send_test_message(phone_number, full_name, event_name, start_date)
+                        #2.2. Update status in database
       {:error, error} -> IO.puts ">>Error creating message: #{error}"
     end
 
-    #3. Send message WhatsappHelper.send_test_message(params["phone_number"])
-		#4. Update status in database
 	end
 
 	def create_message(attendee_uuid, phone_number, payload, message_type) do
