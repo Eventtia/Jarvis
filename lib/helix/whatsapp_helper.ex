@@ -4,21 +4,6 @@ defmodule Helix.WhatsappHelper do
 
   def send_test_message(phone_number) do
     headers = ["Content-Type": "application/json", "Authorization": "Bearer #{@whatsapp_token}"]
-    # body =  '{ "messaging_product": "whatsapp", "to": "#{phone_number}", "type": "template", "template": { "name": "attendee_successful_event_registration", "language": { "code": "en" }, "components": [{
-    #    "type": "body",
-    #    "parameters": [{
-    #                 "type": "text",
-    #                 "text": "name"
-    #             },
-    #             {
-    #             "type": "text",
-    #             "text": "Hi there"
-    #             },
-    #             {
-    #             "type": "text",
-    #             "text": "Hi there 2"
-    #             }]
-    #       }]  } }'
 
     body =  %{  messaging_product: "whatsapp",
                 to: "#{phone_number}",
@@ -26,7 +11,7 @@ defmodule Helix.WhatsappHelper do
                 template: %{  name: "attendee_successful_event_registration",
                               language: %{ code: "en" },
                               components: [ %{  type: "body",
-                                                parameters: [ %{ type: "text", text: "Mauricio Palacio" },
+                                                parameters: [ %{ type: "text", text: "Esteban Ochoa" },
                                                               %{ type: "text", text: "Ben Bohmmer" },
                                                               %{ type: "text", text: "12th of August 2024 at 8:00pm" }
                                                             ]
@@ -46,8 +31,6 @@ defmodule Helix.WhatsappHelper do
     #             type: "template",
     #             template: %{ name: "hello_world", language: %{ code: "en_US" } }
     #           }
-
-
 
     options = [ssl: [{:versions, [:'tlsv1.2']}], recv_timeout: 5_000]
 

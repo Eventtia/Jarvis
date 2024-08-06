@@ -11,7 +11,7 @@ config :helix,
   ecto_repos: [Helix.Repo],
   generators: [timestamp_type: :utc_datetime],
   secret_token: "gvP4cb7xY9bSA76OKOw26B",
-  whatsapp_token: "EAALaLvEcmbcBOy5Ov7JWbNY39DTQ3gZCi4MzUZAH84PlAu192im0DTPPwqTccJqjDBUmjGpHxbD3rIl5YRNZCsElBHYzD6B3icTroMkmhFXamGTwJay6ljYMkrWmSxaKlJuxSKk2IkGpVPlCm91LZBX4jMH4XmpwqrPQZALBGsyZAXzIptDA0UYRiTg5vOwMn4p29as8aCoMWA8nZBA"
+  whatsapp_token: "EAALaLvEcmbcBOyA6fJVERCYMZCiXLDEdg7KMgm9xih7W6SktmexZC5N1C4J9WippUOfa7yzcG4LyXrVtR01cJrTE315D54Tcl6mxIQSsntHbA9md7autnAeuJQpDba3VFlFUrVDUGP6h50c9IDVGvyG6T9XZBn4MIykjJYRK3ABLwiZCZBZBqn5S3V3FHnwWaM3g2g4h3KrwjBeaA4"
 
 # Configures the endpoint
 config :helix, HelixWeb.Endpoint,

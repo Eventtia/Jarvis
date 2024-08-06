@@ -6,7 +6,7 @@ defmodule Helix.Repo.Migrations.AddMessages do
 
     create table(:messages, primary_key: false) do
       add :uuid, :uuid, primary_key: true, default: fragment("uuid_generate_v4()")
-      add :attende_uuid, :integer
+      add :attendee_uuid, :string, size: 36
       add :message_lang, :string
       add :channel, :string, default: "whatsapp"
       add :payload, :string, size: 10000
